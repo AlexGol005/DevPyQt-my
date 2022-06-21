@@ -1,6 +1,12 @@
+import os
+
+import PySide2
+
 from p2design import Ui_Form
 from PySide2 import QtWidgets, QtGui, QtCore
-
+dirname = os.path.dirname(PySide2.__file__)
+plugin_path = os.path.join(dirname, 'plugins', 'platforms')
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = plugin_path
 
 class MyWindow(QtWidgets.QWidget):
 
@@ -45,7 +51,8 @@ class MyWindow(QtWidgets.QWidget):
         self.move(QtWidgets.QApplication.screenAt(self.pos()).size().width() - self.width(), QtWidgets.QApplication.screenAt(self.pos()).size().height() - self.height() - 75)
 
     def onPBCenterclicked(self):
-        self.move(QtWidgets.QApplication.screenAt(self.pos()).size().width()/2 - self.width()/2, QtWidgets.QApplication.screenAt(self.pos()).size().height()/2 - self.height()/2)
+        self.move(QtWidgets.QApplication.screenAt(self.pos()).size().width()/2 - self.width()/2,
+                  QtWidgets.QApplication.screenAt(self.pos()).size().height()/2 - self.height()/2)
 
     def getScreenPosition(self):
         print(self.pos())

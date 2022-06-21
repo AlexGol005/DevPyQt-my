@@ -1,7 +1,12 @@
+import os
+
+import PySide2
 from PySide2 import QtCore, QtWidgets, QtGui
 from ui import P2_QtEventHandling_MyWidgetsForm_design
 import time
-
+dirname = os.path.dirname(PySide2.__file__)
+plugin_path = os.path.join(dirname, 'plugins', 'platforms')
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = plugin_path
 # noinspection PyCallingNonCallable
 class MyWidgetsForm(QtWidgets.QWidget):
     def __init__(self, parent=None):
